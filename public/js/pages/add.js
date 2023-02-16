@@ -3,8 +3,6 @@ var __webpack_exports__ = {};
 /*!***********************************!*\
   !*** ./resources/js/pages/add.js ***!
   \***********************************/
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('Add page');
-});
+document.addEventListener('DOMContentLoaded', function () {});
 /******/ })()
 ;

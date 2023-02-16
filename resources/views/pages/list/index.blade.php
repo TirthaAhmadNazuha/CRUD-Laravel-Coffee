@@ -27,27 +27,20 @@
     </nav>
   </header>
   <main class="bg-orange-50 relative flex flex-col items-center min-h-screen">
-    <h2 class="text-2xl font-semibold my-2 relative z-10">Tambahkan menu kopi baru</h2>
-    <form class="pb-4 w-[350px] max-w-full overflow-hidden bg-white border pt-0 rounded-2xl relative z-10 shadow-md" action="./save" method="get">
-      <div class=" bg-amber-400 h-[5px] w-full"></div>
-      <fieldset class="mx-4 border-b-2 p-1 h-14 mt-3 border-t-2 border-l-2 border-r-2 border-amber-400 rounded-xl overflow-hidden" data-name="nama">
-        <legend class="text-sm text-amber-400 -mb-1 ml-2 px-1">Nama</legend>
-        <input class=" outline-none px-1 caret-amber-400 h-full w-full" type="text" name="coffeeName">
-      </fieldset>
-      <fieldset class="mx-4 border-b-2 p-1 h-14 mt-3 border-t-2 border-l-2 border-r-2 border-amber-400 rounded-xl overflow-hidden" data-name="harga">
-        <legend class="text-sm text-amber-400 -mb-1 ml-2 px-1">Harga</legend>
-        <input class=" outline-none px-1 caret-amber-400 h-full w-full" type="number" name="harga">
-      </fieldset>
-      <fieldset class="mx-4 border-b-2 p-1 h-14 border-t-2 mt-3 border-l-2 border-r-2 border-amber-400 rounded-xl overflow-hidden" data-name="bahanPokok">
-        <legend class="text-sm text-amber-400 -mb-1 ml-2 px-1">Bahan pokok</legend>
-        <input class=" outline-none px-1 caret-amber-400 h-full w-full" type="text" name="ingridients">
-      </fieldset>
-      <fieldset class="mx-4 border-b-2 p-1 h-24 mt-3 border-t-2 border-l-2 border-r-2 border-amber-400 rounded-xl overflow-hidden" data-name="description">
-        <legend class="text-sm text-amber-400 ml-2 px-1">Deskripsi</legend>
-        <textarea name="description" class="w-full min-h-full px-1 caret-amber-400 resize-none -my-1 outline-none"></textarea>
-      </fieldset>
-      <button type="submit" class="mx-4 px-5 py-2 bg-amber-400 my-3 rounded-lg">Tambah</button>
-    </form>
+    <h1 class="text-3xl font-semibold">List Coffee</h1>
+    <div class="con relative z-10 grid grid-cols-3 grid-flow-row gap-4 p-3">
+      @php($result = json_decode(json_decode($coffee)->data))
+      @foreach((array) $result->data as $item)
+      <article class="item bg-white border rounded-2xl p-3">
+        <h3 class="text-2xl font-semibold">{{ $item->coffeeName }}</h3>
+        <p>Rp: {{ $item->price }}</p>
+        <p>Ingridients: {{ $item->ingridients }}</p>
+        <p class="mb-2">Description: {{ $item->description }}</p>
+        <a href="coffee/delete/{{ $item->id }}" class="inline-block py-1 px-2 bg-red-500 rounded-lg mr-1">Delete</a>
+        <a href="coffee/edit/{{ $item->id }}" class="inline-block py-1 px-2 bg-amber-400 rounded-lg">Edit</a>
+      </article>
+      @endforeach
+    </div>
     <div class="fixed bottom-0 left-0 right-0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fbbf24" fill-opacity="1" d="M0,128L48,133.3C96,139,192,149,288,170.7C384,192,480,224,576,213.3C672,203,768,149,864,144C960,139,1056,181,1152,170.7C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </div>

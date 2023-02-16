@@ -16,4 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoffeeController;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/coffee', [CoffeeController::class, 'index']);
 Route::get('/coffee/add', [CoffeeController::class, 'add']);
+Route::get('/coffee/save', [CoffeeController::class, 'addCoffee']);
+Route::get('/coffee/delete/{id}', [CoffeeController::class, 'deleteCoffee']);
